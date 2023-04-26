@@ -18,7 +18,7 @@ function verifyIfExistsAccountCPF(request, response, next) {
 
   request.customer = customer;
 
-  return next;
+  return next();
 }
 
 app.post("/account", (request, response) => {
@@ -41,7 +41,7 @@ app.post("/account", (request, response) => {
     statamen: [],
   });
 
-  return response.status(201).send('Create New Customer');
+  return response.status(201).send("Create New Customer");
 });
 
 app.get("/statement", verifyIfExistsAccountCPF, (request, response) => {
