@@ -2,7 +2,7 @@
 
 // ## FinAPI - Financeira
 
-// ## Requisitos
+### **// ## Requisitos**
 
 // - [X] Deve ser possível criar uma conta
 
@@ -17,7 +17,7 @@
 // - [] Deve ser possível deletar uma conta
 
 
-// ## Regras de negócio
+### **// ## Regras de negócio**
 
 // - [X] Não Deve ser possível cadastrar uma conta com CPF já exitente
 
