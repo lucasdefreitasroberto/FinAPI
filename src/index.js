@@ -10,20 +10,16 @@ function verifyIfExistsAccountCPF(request, response, next) {
   const { cpf } = request.headers;
 
   //.find verifica se existe o cpf e retorna os elementos
-  const Customer = customers.find((customers) => customers.cpf === cpf);
+  const customer = customers.find((customers) => customers.cpf === cpf);
 
-  if (!Customer) {
+  if (!customer) {
     return response.status(400).json({ error: "Customer Not Found" });
   }
 
-  request.Customer = Customer;
+  request.customer = customer;
 
   return next;
 }
-
-app.get("/", (request, response) => {
-  return response.json(["API Financeira"]);
-});
 
 app.post("/account", (request, response) => {
   const { cpf, name } = request.body;
@@ -45,13 +41,13 @@ app.post("/account", (request, response) => {
     statamen: [],
   });
 
-  return response.status(201).send();
+  return response.status(201).send('Create New Customer');
 });
 
 app.get("/statement", verifyIfExistsAccountCPF, (request, response) => {
-  const { Customer } = request;
+  const { customer } = request;
 
-  return response.json(Customer.statamen);
+  return response.json(customer.statamen);
 });
 
 app.listen(4000, (err) => {
